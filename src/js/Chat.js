@@ -134,7 +134,7 @@ export default class Chat {
     this.btnSend = chat.querySelector('.chat__btn-send');
     this.inputMessage = chat.querySelector('.chat__input');
 
-    this.websocket = new WebSocket('wss://http://localhost:3000/ws');
+    this.websocket = new WebSocket('wss://chat-flbh.onrender.com/ws');
     this.subscribeOnEvents();
     this.btnSend.addEventListener('click', this.sendMessage);
   }
