@@ -1,2 +1,2 @@
-import './scss/crm.scss';
+import './scss/chat.scss';
 import './js/app';

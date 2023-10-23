@@ -1,10 +1,8 @@
-import Entity from './Entity';
 import createRequest from './createRequest';
 
-export default class ChatAPI extends Entity {
+export default class ChatAPI {
   constructor() {
-    super();
-    this.url = 'http://localhost:3000';
+    this.url = 'https://chat-backend-ff5v.onrender.com';
   }
 
   async createUser(userName) {

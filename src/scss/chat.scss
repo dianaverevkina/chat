@@ -4,6 +4,7 @@
 $ff: 'Overpass', sans-serif;
 $fs: 1rem;
 $fw: 500;
+$beige: #eee5e5;
 $grey: #797C7B;
 $black: #000E08;
 $white: #fff;
@@ -31,12 +32,14 @@ body {
   font-size: $fs;
   font-weight: $fw;
   color: $black;
-  background-color: #eee5e5;
+  background-color: $beige;
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;  
 }
 
 .root {
   height: 100vh;
-  max-width: 1200px;
+  max-width: 75rem;
   padding: 0 1.25rem;
   margin: 0 auto;
   overflow-x: hidden;
@@ -50,24 +53,48 @@ body {
   flex-direction: column;
   border-radius: 0.4375rem;
   background: $white;
-  box-shadow: 1px 4px 13px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 1px 4px 13px 1px rgba($black, 0.25);
   margin: 1rem 0;
 
   // .chat__container
   &__container {
+    max-height: calc(100vh - 2rem);
     flex: 1;
     display: flex;
   }
   // .chat__list
   &__list {
+    max-width: 10.625rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
     border-radius: 0.4rem 0 0 0.4rem;
     background: $white;
     border-right: 1px solid rgb(188, 186, 186);
-    padding: 1rem 2rem 1rem 1rem;
+    padding: 1.25rem 0.5rem 1.25rem 1rem;
     z-index: 2;
+  }
+  // .chat__btn-exit
+  &__btn-exit {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    color: $white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 1rem;
+    background: $green;
+    transition: 0.3s;
+    &:hover {
+      background-color: #155d54;
+      transition: 0.3s;
+    }
   }
   // .chat__users
   &__users {
+    padding: 0 0.4rem 0 0;
+    font-size: 1.2rem;
+    overflow-y: auto;
   }
   // .chat__user
   &__user {
@@ -77,17 +104,17 @@ body {
     flex-grow: 2;
     display: flex;
     flex-direction: column;
-    padding: 1.25rem 1.5rem;
+    justify-content: space-between;
+    padding: 1.25rem 0.7rem;
   }
   // .chat__messages
   &__messages {
-    flex-grow: 2;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-  }
-  // .chat__mesage
-  &__mesage {
+    padding: 0.5rem;
+    margin: 0 0 0.5rem;
+    overflow-y: auto;
   }
   // .chat__field
   &__field {
@@ -128,8 +155,13 @@ body {
   }
 }
 .user {
+  word-wrap: break-word;
+  hyphens: auto;
   // .user__name
   &__name {
+    &_red {
+      color: $green;
+    }
   }
 }
 .message {
@@ -142,20 +174,16 @@ body {
   &__data {
     font-size: 0.8rem;
     display: flex;
-    gap: 0 10px;
+    gap: 0 0.625rem;
     margin: 0 0 2px;
-  }
-  // .message__sender
-  &__sender {
-  }
-  // .message__date
-  &__date {
   }
   // .message__content
   &__content {
     border-radius: 0rem 1.25rem 1.25rem 1.25rem;
     background: $lightBlue;
     padding: 0.75rem 0.75rem 0.75rem 0.88rem;
+    word-wrap: break-word;
+    hyphens: auto;
   }
 }
 
@@ -170,80 +198,8 @@ body {
     background: $lightGreen;
   }
 }
-
-
-// -------------POPOVER-----------------
-
-
-.popover {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba($black, 0.50);
-  @include flexCenter(row);
-  z-index: 999;
-}
-.form {
-  min-width: 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 2.37rem 1rem;
-  font-size: 1.25rem;
-  border-radius: 0.75rem;
-  background: $white;
-  padding: 1.75rem 2rem 1.75rem;
-  //.form__title 
-  &__title {
-    color: $black;
-    text-align: center;
-    margin: 0 0 0.5rem;
-  }
-  // .form__block
-  &__block {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem 2rem;
-  }
-  // .form__row
-  &__row {
-    color: $black;
-  }
-  // .form__input-title
-  &__input-title {
-    font-weight: inherit;
-    margin: 0 0 0.75rem;
-  }
-  // .form__input
-  &__input {
-    font-size: 1rem;
-    width: 100%;
-    display: block;
-    padding: 0.625rem 0.5rem;
-    border-radius: 0.5rem;
-    border: 1px solid #EAEEF4;
-    background: #F6FAFD;
-  }
-  // .form__textarea
-  &__textarea {
-    font-size: 1rem;
-    width: 100%;
-    resize: none;
-    display: block;
-    padding: 0.625rem 0.5rem;
-    border-radius: 0.5rem;
-    border: 1px solid #EAEEF4;
-    background: #F6FAFD;
-  }
-  // .form__tooltip
-  &__tooltip{
-    position: absolute;
-    padding: 0.625rem 0.5rem;
-    background: #fff;
-    box-shadow: 0 5px 20px 0 rgba($black, 0.1);
-    z-index: 999;
-  }
+::-webkit-scrollbar {
+  width: 3px;
 }
 
 // -----------POPOVER--------------
@@ -259,7 +215,7 @@ body {
   z-index: 999;
 }
 .form {
-  min-width: 400px;
+  min-width: 25rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -290,7 +246,7 @@ body {
   // .form__btn-continue 
   &__btn-continue {
     align-self: center;
-    max-width: 200px;
+    max-width: 12.5rem;
     text-align: center;
     font-size: 1rem;
     color: $white;
@@ -306,7 +262,7 @@ body {
   // .form__error
   &__error  {
     font-size: 0.8rem;
-    padding: 10px 0 0;
+    padding: 0.625rem 0 0;
     color: red;
   }
 }

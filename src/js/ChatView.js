@@ -6,10 +6,9 @@ export default class ChatView {
       <div class="chat__container">
         <div class="chat__list">
           <ul class="chat__users">
-            <li class="chat__user user">
-              <span class="user__name">Alexandra</span>
-            </li>
           </ul>
+
+          <button class="chat__btn-exit">Log out</button>
         </div>
         <div class="chat__block">
           <div class="chat__messages"></div>
